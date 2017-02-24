@@ -4,6 +4,11 @@ Microservice for using github as a backend
 
 ## Usage
 
+```sh
+# using now
+now namjul/micro-github-backend -e SECRET=123 -e REPO=db -e SCHEMA='{ "exercise": [], "settings": {}}'
+```
+
 ### Environment variables
 
 ```sh
