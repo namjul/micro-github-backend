@@ -2,7 +2,7 @@ const { send, createError, json } = require('micro');
 const cuid = require('cuid');
 const db = require('./db');
 const api = require('./api');
-const { getResource } = require('./utils');
+const { checkResource, getResource } = require('./utils');
 
 module.exports = (req, res) => ({
   async show({ username, reponame }) {
@@ -23,6 +23,13 @@ module.exports = (req, res) => ({
   },
   async create({ username, reponame }) {
     const { resource } = req.params;
+
+    await checkResource({ 
+      username, 
+      reponame, 
+      resource 
+    })
+
     const { content, sha } = await getResource({
       username,
       reponame,
@@ -66,6 +73,13 @@ module.exports = (req, res) => ({
   },
   async update({ username, reponame }) {
     const { resource, id } = req.params;
+
+    await checkResource({ 
+      username, 
+      reponame, 
+      resource 
+    })
+
     const { content, sha } = await getResource({
       username,
       reponame,
@@ -102,6 +116,13 @@ module.exports = (req, res) => ({
   },
   async destroy({ username, reponame }) {
     const { resource, id } = req.params;
+
+    await checkResource({ 
+      username, 
+      reponame, 
+      resource 
+    })
+
     const { content, sha } = await getResource({
       username,
       reponame,

@@ -15,7 +15,7 @@ exports.handleErrors = fn => async (req, res) => {
   }
 };
 
-exports.getResource = async ({ username, reponame, resource }) => {
+exports.checkResource = async ({ username, reponame, resource }) => {
   // Create resource if it does exist
   if (!await db.has(`${username}:${resource}`)) {
     try {
@@ -29,7 +29,11 @@ exports.getResource = async ({ username, reponame, resource }) => {
         throw err;
       }
     }
+  }
+};
 
+exports.getResource = async ({ username, reponame, resource }) => {
+  if (!await db.has(`${username}:${resource}`)) {
     try {
       const { content, sha } = await api.read({ username, reponame, resource });
       await db.put(`${username}:${resource}`, { content, sha });
