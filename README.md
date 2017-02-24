@@ -29,6 +29,18 @@ SCHEMA={ "exercise": [], "settings": {}}
 }
 ```
 
+### Authorization
+
+For readonly access provide username
+```
+username: <github-username>
+```
+
+For full access provide githuh oauth token
+```
+authorization: <github-oauth-token>
+```
+
 ## Routes
 
 ### Plural routes
