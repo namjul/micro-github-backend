@@ -66,3 +66,8 @@ PATCH  /profile
 ## License
 
 MIT
+
+## Acknowledgments
+
+* https://github.com/typicode/json-server
+
