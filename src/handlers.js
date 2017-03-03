@@ -44,7 +44,7 @@ module.exports = (req, res) => ({
         const check = content.find(entry => entry.id === value.id);
 
         if (check) {
-          throw createError(404, `Duplicate id ${value.id} found`);
+          throw createError(409, `Duplicate id ${value.id} found`);
         }
       } else {
         // create unique id
