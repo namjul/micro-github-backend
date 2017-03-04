@@ -151,7 +151,7 @@ module.exports = (req, res) => ({
         sha: newSha
       });
 
-      send(res, 200);
+      send(res, 200, {});
     } else {
       send(res, 404, 'Not Found');
     }
