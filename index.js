@@ -15,6 +15,7 @@ const pattern = new UrlPattern(
 module.exports = handleErrors(async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'authorization, username');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
 
   if (req.method === 'OPTIONS') {
     send(res, 200);
