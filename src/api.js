@@ -73,7 +73,7 @@ exports.read = function read(
 };
 
 exports.write = function write(
-  { username, reponame, resource, data, sha, format = 'json', filename }
+  { username, reponame, resource, data, sha, format = 'json', message = `Update ${resource}`, filename }
 ) {
   validate(username, reponame, resource);
   return instance
@@ -82,7 +82,7 @@ exports.write = function write(
       url: `/repos/${username}/${reponame}/contents/${resource}${format === 'assets' ? '/' + filename : '.' + format}`,
       sha,
       data: {
-        message: `Update ${resource}`,
+        message,
         sha,
         content: encodeContent(
           format === 'asset'
@@ -101,7 +101,7 @@ exports.remove = function remove(
   validate(username, reponame, resource);
   return instance
     .request({
-      message: `Delete ${resource}`,
+      message: `Delete ${resource} resource`,
       url: `/repos/${username}/${reponame}/contents/${resource}${format === 'asset' ? '/' + filename : '.' + format}`,
       data: { message: 'update repo', sha }
     })

@@ -61,7 +61,8 @@ module.exports = (req, res) => ({
       reponame,
       resource,
       data: newContent,
-      sha
+      sha,
+      message: `Create ${resource}`
     });
 
     await db.put(`${username}:${resource}`, {
@@ -104,7 +105,8 @@ module.exports = (req, res) => ({
       reponame,
       resource,
       data: newContent,
-      sha
+      sha,
+      message: `Update ${resource}`
     });
 
     await db.put(`${username}:${resource}`, {
@@ -143,7 +145,8 @@ module.exports = (req, res) => ({
         reponame,
         resource,
         data: newContent,
-        sha
+        sha,
+        message: `Delete ${resource}`
       });
 
       await db.put(`${username}:${resource}`, {
