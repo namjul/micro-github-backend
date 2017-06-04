@@ -1,3 +1,4 @@
+require('dotenv').config();
 const url = require('url');
 const { send } = require('micro');
 const UrlPattern = require('url-pattern');
